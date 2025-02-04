@@ -1,0 +1,18 @@
+// example.th
+
+// fn empty() {}
+
+fn foo() {
+    a.b = 2;
+}
+
+// pub struct Vector<T> (
+//     buf: *T,
+//     len: usize,
+// ) : Movable, Copyable, Iterable, Serializable {
+//     pub var! INITIAL_LEN: usize = 8;
+//
+//     pub const fn new() Self {
+//         return Vector.{null, 0};
+//     }
+// }

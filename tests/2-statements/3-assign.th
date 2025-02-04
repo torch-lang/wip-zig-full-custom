@@ -1,0 +1,8 @@
+fn assign_param(mut a: i32) {
+    a = 0;
+}
+
+fn assign_local() {
+    mut a: i32;
+    a = 0;
+}

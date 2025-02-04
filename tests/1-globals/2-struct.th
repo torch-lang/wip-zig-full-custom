@@ -1,0 +1,5 @@
+struct Empty {}
+
+struct Field { a: i32 }
+struct Fields { a: i32, b: i32 }
+struct FieldsComma { a: i32, b: i32, }

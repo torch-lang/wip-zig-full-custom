@@ -1,0 +1,7 @@
+fn addr_of(a: i32) *i32 {
+    return &a;
+}
+
+fn addr_of_mut(mut a: i32) *mut i32 {
+    return &mut a;
+}

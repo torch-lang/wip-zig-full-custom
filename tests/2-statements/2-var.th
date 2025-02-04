@@ -1,0 +1,11 @@
+fn constant() {
+    var a: i32 = 0;
+}
+
+fn mutable_initialized() {
+    mut a: i32 = 0;
+}
+
+fn mutable_uninitialized() {
+    mut a: i32;
+}

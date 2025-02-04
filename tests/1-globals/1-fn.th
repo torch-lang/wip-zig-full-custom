@@ -1,0 +1,13 @@
+fn empty() {}
+
+fn param(a: i32) {}
+fn params(a: i32, b: i32) {}
+fn params_comma(a: i32, b: i32,) {}
+
+fn return_type() i32 {
+    return 0;
+}
+
+fn params_and_return_type(a: i32, b: i32) i32 {
+    return 0;
+}

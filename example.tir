@@ -1,0 +1,31 @@
+decl #void ; should be 0
+decl #i32  ; should be 0 + n
+decl #i64  ; should be 0 + m
+
+; fn add(a: i32, b: i32) i32 {
+;   return a + b;
+; }
+fn $0 (
+    #i32 %0
+    #i32 %1
+) #i32 {
+:0
+    %2 = add %0 %1
+    ret %2
+}
+
+; struct Point {
+;   x: i32,
+;   y: i32,
+; }
+type #0 { #i32 #i32 }
+
+; fn get_x(p: Point) i32 {
+;   return px;
+; }
+fn $1 (
+    #0 %0
+) #i32 {
+    %1 = gep .0 %0
+    ret %1
+}

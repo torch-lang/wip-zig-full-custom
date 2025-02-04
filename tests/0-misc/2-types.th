@@ -1,0 +1,5 @@
+fn simple(a: i32) {}
+
+fn ptr(a: *i32) {}
+fn double_ptr(a: **i32) {}
+fn mut_ptr(a: *mut i32) {}

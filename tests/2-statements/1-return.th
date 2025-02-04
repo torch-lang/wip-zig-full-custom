@@ -1,0 +1,13 @@
+fn return_void() {
+    return;
+}
+
+fn return_value() i32 {
+    return 0;
+}
+
+fn return_multiple() i32 {
+    return 0;
+    return 1;
+    return 2;
+}

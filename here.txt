@@ -1,0 +1,12 @@
+IDEA: handle operator precedence inside semantic check / lower, not inside the parser.
+
+HERE: semantic check + finish codegen.
+
+FIXME: ambiguity - note: see how cppfront handles this.
+    // operator *(foo(2,3), 1) | call deref(foo(2,3))(1)
+    foo(2, 3)*(1);
+
+IR NOTE: for calls check if volatile/side effect then func is volatile too.
+    -> then it cannot be optimized-out.
+
+TODO: test errors too.
