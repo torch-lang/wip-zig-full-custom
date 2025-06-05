@@ -1,0 +1,17 @@
+fn call_empty() i32 {
+    return call_empty();
+}
+
+//: fn <ident> ( ) <ident> {
+//:     return <ident> ( ) ;
+//: }
+
+fn call_args(a: i32, b: i32) i32 {
+    return call_args(2, 3);
+    return call_args(2, 3,);
+}
+
+//: fn <ident> ( <ident> : <ident> , <ident> : <ident> ) <ident> {
+//:     return <ident> ( <num> , <num> ) ;
+//:     return <ident> ( <num> , <num> , ) ;
+//: }

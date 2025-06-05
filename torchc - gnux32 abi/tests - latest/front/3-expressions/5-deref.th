@@ -1,0 +1,7 @@
+fn deref(a: *i32) i32 {
+    return a*;
+}
+
+//: fn <ident> ( <ident> : * <ident> ) <ident> {
+//:     return <ident> * ;
+//: }

@@ -1,0 +1,18 @@
+{
+    "cSpell.words": [
+        "anyopaque",
+        "callconv",
+        "comptime",
+        "deinit",
+        "memcpy",
+        "mmap",
+        "munmap",
+        "noreturn",
+        "orelse",
+        "rodata",
+        "sigaction",
+        "syscall",
+        "torchc",
+        "usize"
+    ]
+}

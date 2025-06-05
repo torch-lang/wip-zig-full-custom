@@ -1,0 +1,13 @@
+=== BasicBlock ===
+
+- constant propagation
+- instruction combining
+- memory-to-register promotion
+
+=== Function ===
+
+- common subexpression elimination
+
+=== Module ===
+
+- inlining

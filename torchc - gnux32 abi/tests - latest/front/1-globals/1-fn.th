@@ -1,0 +1,31 @@
+fn empty() {}
+
+//: fn <ident> ( ) { }
+
+fn param(a: i32) {}
+
+//: fn <ident> ( <ident> : <ident> ) { }
+
+fn params(a: i32, b: i32) {}
+
+//: fn <ident> ( <ident> : <ident> , <ident> : <ident> ) { }
+
+fn params_comma(a: i32, b: i32,) {}
+
+//: fn <ident> ( <ident> : <ident> , <ident> : <ident> , ) { }
+
+fn return_type() i32 {
+    return 0;
+}
+
+//: fn <ident> ( ) <ident> {
+//:     return <num> ;
+//: }
+
+fn params_and_return_type(a: i32, b: i32) i32 {
+    return 0;
+}
+
+//: fn <ident> ( <ident> : <ident> , <ident> : <ident> ) <ident> {
+//:     return <num> ;
+//: }

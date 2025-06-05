@@ -1,0 +1,5 @@
+// example.th
+
+fn foo() i32 {
+    return 5;
+}

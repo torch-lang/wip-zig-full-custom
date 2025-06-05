@@ -1,0 +1,17 @@
+struct Point {
+    x: i32,
+    y: i32,
+}
+
+//: struct <ident> {
+//:     <ident> : <ident> ,
+//:     <ident> : <ident> ,
+//: }
+
+fn access_struct_field(p: Point) i32 {
+    return p.y;
+}
+
+//: fn <ident> ( <ident> : <ident> ) <ident> {
+//:     return <ident> . <ident> ;
+//: }

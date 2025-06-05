@@ -1,0 +1,17 @@
+fn assign_param(mut a: i32) {
+    a = 0;
+}
+
+//: fn <ident> ( mut <ident> : <ident> ) {
+//:     <ident> = <num> ;
+//: }
+
+fn assign_local() {
+    mut a: i32;
+    a = 0;
+}
+
+//: fn <ident> ( ) {
+//:     mut <ident> : <ident> ;
+//:     <ident> = <num> ;
+//: }

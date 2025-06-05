@@ -1,0 +1,33 @@
+fn addr_of(a: i32) *i32 {
+    return &a;
+}
+
+//: fn <ident> ( <ident> : <ident> ) * <ident> {
+//:     return & <ident> ;
+//: }
+
+fn addr_of_mut(mut a: i32) *mut i32 {
+    return &mut a;
+}
+
+//: fn <ident> ( mut <ident> : <ident> ) * mut <ident> {
+//:     return & mut <ident> ;
+//: }
+
+//' function_introducer
+//'   identifier
+//'     mut
+//'     identifier
+//'       identifier
+//'     end
+//'   end
+//'     dot
+//'     mut
+//'     identifier
+//'   end
+//'     return_introducer
+//'       ampersand
+//'       mut
+//'       identifier
+//'     end
+//'   end

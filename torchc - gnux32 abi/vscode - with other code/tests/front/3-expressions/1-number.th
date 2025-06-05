@@ -1,0 +1,7 @@
+fn integer() i32 {
+    return 5;
+}
+
+//: fn <ident> ( ) <ident> {
+//:     return <num> ;
+//: }

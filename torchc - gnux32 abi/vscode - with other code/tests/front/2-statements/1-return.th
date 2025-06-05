@@ -1,0 +1,27 @@
+fn return_void() {
+    return;
+}
+
+//: fn <ident> ( ) {
+//:     return ;
+//: }
+
+fn return_value() i32 {
+    return 0;
+}
+
+//: fn <ident> ( ) <ident> {
+//:     return <num> ;
+//: }
+
+fn return_multiple() i32 {
+    return 0;
+    return 1;
+    return 2;
+}
+
+//: fn <ident> ( ) <ident> {
+//:     return <num> ;
+//:     return  <num>  ;
+//:     return <num> ;
+//: }

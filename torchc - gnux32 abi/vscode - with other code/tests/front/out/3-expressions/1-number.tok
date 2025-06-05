@@ -1,0 +1,10 @@
+fn
+<ident>
+(
+)
+<ident>
+{
+return
+<num>
+;
+}

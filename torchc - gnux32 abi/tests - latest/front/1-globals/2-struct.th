@@ -1,0 +1,15 @@
+struct Empty {}
+
+//: struct <ident> { }
+
+struct Field { a: i32 }
+
+//: struct <ident> { <ident> : <ident> }
+
+struct Fields { a: i32, b: i32 }
+
+//: struct <ident> { <ident> : <ident> , <ident> : <ident> }
+
+struct FieldsComma { a: i32, b: i32, }
+
+//: struct <ident> { <ident> : <ident> , <ident> : <ident> , }

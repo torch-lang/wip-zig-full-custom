@@ -1,0 +1,13 @@
+fn
+<ident>
+(
+<ident>
+:
+<ident>
+)
+<ident>
+{
+return
+<ident>
+;
+}

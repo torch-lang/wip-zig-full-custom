@@ -1,0 +1,23 @@
+fn constant() {
+    var a: i32 = 0;
+}
+
+//: fn <ident> ( ) {
+//:     var <ident> : <ident> = <num> ;
+//: }
+
+fn mutable_initialized() {
+    mut a: i32 = 0;
+}
+
+//: fn <ident> ( ) {
+//:     mut <ident> : <ident> = <num> ;
+//: }
+
+fn mutable_uninitialized() {
+    mut a: i32;
+}
+
+//: fn <ident> ( ) {
+//:     mut <ident> : <ident> ;
+//: }

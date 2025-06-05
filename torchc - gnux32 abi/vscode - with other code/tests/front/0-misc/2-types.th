@@ -1,0 +1,13 @@
+fn types(
+    simple: i32,
+    ptr: *i32,
+    double_ptr: **i32,
+    mut_ptr: *mut i32,
+) {}
+
+//: fn <ident> (
+//:     <ident> : <ident> ,
+//:     <ident> : * <ident> ,
+//:     <ident> : * * <ident> ,
+//:     <ident> : * mut <ident> ,
+//: ) { }
