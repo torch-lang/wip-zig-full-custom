@@ -35,7 +35,7 @@ export fn main(_: usize, _: [*]const [*:0]const u8) void {
     // TODO: HERE: there is just too many bugs with the zig compiler here....
     // 1. cannot remove "unreachable".
     // 2. cannot check for the result of the syscall because zig removes the
-    //      comparison and always executes the if body WTF
+    //      comparison and always executes the if body WTF -> this could be because we are telling the zig compiler that that branch will never be executed :(
     // 3. if uncoment the above code, the print arg thing, this will segfault WTF.
 
     _ = sys.sigaction(11, &act); // SIGSEGV
