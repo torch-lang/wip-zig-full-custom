@@ -12,7 +12,7 @@ pub const PageAllocator = struct {
     cursor: usize,
     guard_count: usize,
     // pointer to a page in memory that stores an array of guard page addresses and their handler messages.
-    // !!! NOTE: addr is NOT necessary. !!!
+    // !!! NOTE: addr is NOT necessary. !!! ||| ALSO NOTE: it is necessary if allocations can be any size.
     guards: [*]align(PAGE_SIZE) struct { addr: usize, message: []const u8 },
 
     const Self = @This();
