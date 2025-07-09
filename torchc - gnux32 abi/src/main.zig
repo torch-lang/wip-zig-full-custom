@@ -2,6 +2,37 @@ const sys = @import("lib/sys.zig");
 const mem = @import("lib/mem.zig");
 const io = @import("lib/io.zig");
 
+// ==================================================================================================
+
+const sys = @import("lib/sys.zig");
+
+fn handler(_: i32) callconv(.C) void {
+    const msg = "it worked!\n";
+    _ = sys.write(2, msg, msg.len);
+    sys.exit(0);
+}
+
+export fn main(argc: usize, _: [*]const [*:0]const u8) void {
+    var act = sys.Sigaction{
+        .handler = &handler,
+        .mask = 0x04000000, // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! NOTE: this will show in strace inside the sa_flags WTF
+        .flags = 0,
+        .restorer = null,
+    };
+
+    _ = sys.sigaction(11, &act); // SIGSEGV
+
+    if (argc > 1) {
+        const ptr: *volatile u8 = @ptrFromInt(1);
+        ptr.* = 0; // trigger SIGSEGV
+    }
+
+    const msg = "done";
+    _ = sys.write(2, msg, msg.len);
+}
+
+// ==================================================================================================
+
 fn handler(_: i32) callconv(.C) void {
     const msg = "handler called\n";
     _ = sys.write(2, msg, msg.len);
