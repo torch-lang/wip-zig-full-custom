@@ -25,31 +25,32 @@ const panic = @import("panic.zig").panic;
 //     }
 // }
 
+pub fn fprint(fd: u8, comptime fmt: []const u8, args: anytype) void {
+    const parts = comptime build_parts(fmt);
+    var total_len: usize = 0;
+    var iov: [parts.len]sys.IOVec = undefined;
+    inline for (parts, 0..) |part, i| {
+        if (part.is_placeholder) {
+            const arg = args[part.arg_index];
+            iov[i] = sys.IOVec.fromSlice(arg);
+            total_len += arg.len;
+        } else {
+            iov[i] = sys.IOVec.fromSlice(fmt[part.start..part.end]);
+            total_len += part.end - part.start;
+        }
+    }
+    const written = sys.writev(fd, &iov);
+    if (written == 0 or written > total_len) {
+        panic("error when trying to write to file");
+    }
+}
+
 const Part = struct {
     start: usize,
     end: usize,
     is_placeholder: bool,
-    arg_index: usize, // Only meaningful if is_placeholder is true
+    arg_index: usize, // only if `is_placeholder` is true
 };
-
-inline fn calculate_num_parts(comptime fmt: []const u8) usize {
-    var count: usize = 0;
-    var i: usize = 0;
-    while (i < fmt.len) {
-        if (fmt[i] == '%') {
-            count += 1; // Count each '%' as a placeholder
-            i += 1;
-        } else {
-            var j = i;
-            while (j < fmt.len and fmt[j] != '%') {
-                j += 1; // Find the next '%' or end of string
-            }
-            count += 1; // Count the literal segment
-            i = j;
-        }
-    }
-    return count;
-}
 
 inline fn build_parts(comptime fmt: []const u8) [calculate_num_parts(fmt)]Part {
     var parts: [calculate_num_parts(fmt)]Part = undefined;
@@ -67,7 +68,7 @@ inline fn build_parts(comptime fmt: []const u8) [calculate_num_parts(fmt)]Part {
             while (j < fmt.len and fmt[j] != '%') {
                 j += 1;
             }
-            parts[idx] = Part{ .start = i, .end = j, .is_placeholder = false, .arg_index = 0 }; // Dummy value for non-placeholders
+            parts[idx] = Part{ .start = i, .end = j, .is_placeholder = false, .arg_index = 0 };
             idx += 1;
             i = j;
         }
@@ -75,15 +76,21 @@ inline fn build_parts(comptime fmt: []const u8) [calculate_num_parts(fmt)]Part {
     return parts;
 }
 
-pub fn write_formatted(fd: u8, comptime fmt: []const u8, args: anytype) void {
-    const parts = comptime build_parts(fmt);
-    var iov: [parts.len]sys.IOVec = undefined;
-    inline for (parts, 0..) |part, i| {
-        if (part.is_placeholder) {
-            iov[i] = sys.IOVec.fromSlice(args[part.arg_index]);
+inline fn calculate_num_parts(comptime fmt: []const u8) usize {
+    var part_count: usize = 0;
+    var i: usize = 0;
+    while (i < fmt.len) {
+        if (fmt[i] == '%') {
+            part_count += 1;
+            i += 1;
         } else {
-            iov[i] = sys.IOVec.fromSlice(fmt[part.start..part.end]);
+            var j = i;
+            while (j < fmt.len and fmt[j] != '%') {
+                j += 1;
+            }
+            part_count += 1;
+            i = j;
         }
     }
-    _ = sys.writev(fd, &iov);
+    return part_count;
 }
